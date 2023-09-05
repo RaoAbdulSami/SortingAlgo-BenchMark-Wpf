@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="SortingAlgos.View.mainDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SortingAlgos.View" xmlns:local1="clr-namespace:SortingAlgos.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.DataContext>
+            <local1:mainDisplayViewModel/>
+        </Grid.DataContext>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Label Content="Random Array Generated: "/>
+            <TextBlock Text="{Binding Path=RandomArrayShow}" Margin="10 10 0 0" Padding="10" VerticalAlignment="Center" Background="#FFEEEEEE" MinHeight="150"  />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <Label Content="Enter the Size of Array : "/>
+            <TextBox Margin="20 10 20 0" VerticalAlignment="Center" MinHeight="30" Background="WhiteSmoke" Text="{Binding Path=ArraySize, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Command="{Binding Path=generateRand}" CommandParameter="null" Content="Generate Random" Background="#FFEC965A" Foreground="White" Margin=" 20 20 20 5" BorderBrush="{x:Null}" Padding="5" FontSize="17" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+            <Label Content="Sorted Array Generated : "/>
+            <TextBlock Text="{Binding Path=SortedArrayShow}" Margin="10 10 0 0" Padding="10" VerticalAlignment="Center" Background="#FFEEEEEE" MinHeight="150"   />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+            <Button Command="{Binding Path=bubbleSort}"     Content="Bubble Sort"      Margin=" 20 20 20 5"     Style="{StaticResource ResourceKey=button}"/>
+            <Button Command="{Binding Path=selectionSort}"  Content="Selection Sort"   Margin=" 20 10 20 5"     Style="{StaticResource ResourceKey=button}"/>
+            <Button Command="{Binding Path=insertioSort}"   Content="Insertion Sort"   Margin=" 20 10 20 5"     Style="{StaticResource ResourceKey=button}"/>
+        </StackPanel>
+    </Grid>
+    <UserControl.Resources>
+        <Style x:Key="button" TargetType="Button" >
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FFF99359"/>
+            <Setter Property="BorderBrush" Value="#FFF99359"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="17"/>
+        </Style>
+    </UserControl.Resources>
+    
+</UserControl>
