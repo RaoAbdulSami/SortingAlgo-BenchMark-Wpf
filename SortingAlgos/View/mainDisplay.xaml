@@ -5,12 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SortingAlgos.View" xmlns:local1="clr-namespace:SortingAlgos.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button" >
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FFF99359"/>
+            <Setter Property="BorderBrush" Value="#FFF99359"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="17"/>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid Background="White">
         <Grid.DataContext>
             <local1:mainDisplayViewModel/>
         </Grid.DataContext>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -20,7 +31,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
             <Label Content="Random Array Generated: "/>
-            <TextBlock Text="{Binding Path=RandomArrayShow}" Margin="10 10 0 0" Padding="10" VerticalAlignment="Center" Background="#FFEEEEEE" MinHeight="150"  />
+            <TextBlock Text="{Binding Path=RandomArrayShow}" Margin="10 10 0 0" Padding="10" VerticalAlignment="Center" Background="#FFEEEEEE" MinHeight="150" TextWrapping="Wrap"  />
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
@@ -31,23 +42,30 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
             <Label Content="Sorted Array Generated : "/>
-            <TextBlock Text="{Binding Path=SortedArrayShow}" Margin="10 10 0 0" Padding="10" VerticalAlignment="Center" Background="#FFEEEEEE" MinHeight="150"   />
+            <TextBlock Text="{Binding Path=SortedArrayShow}" Margin="10 10 0 0" Padding="10" VerticalAlignment="Center" Background="#FFEEEEEE" MinHeight="150" TextWrapping="Wrap"  />
         </StackPanel>
-
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
+         <StackPanel Orientation="Vertical">
+                <Label Content="Time Bubble Sort: "/>
+                <TextBox  Margin="10 5 350 0" Text="{Binding Path=BubbleTimeShow}" />
+ 
+             
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Label Content="Time Selection Sort: "/>
+                <TextBox  Margin="10 5 350 0" Text="{Binding Path=SelectionTimeShow}"/>
+             
+            </StackPanel><StackPanel Orientation="Vertical">
+                <Label Content="Time Insertion Sort: "/>
+                <TextBox  Margin="10 5 350 0" Text="{Binding Path=InsertionTimeShow}"/>
+             
+            </StackPanel>
+        </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-            <Button Command="{Binding Path=bubbleSort}"     Content="Bubble Sort"      Margin=" 20 20 20 5"     Style="{StaticResource ResourceKey=button}"/>
-            <Button Command="{Binding Path=selectionSort}"  Content="Selection Sort"   Margin=" 20 10 20 5"     Style="{StaticResource ResourceKey=button}"/>
-            <Button Command="{Binding Path=insertioSort}"   Content="Insertion Sort"   Margin=" 20 10 20 5"     Style="{StaticResource ResourceKey=button}"/>
+            <Button Command="{Binding Path=bubbleSort}"     Content="Bubble Sort"      Margin=" 20 20 20 5"     Style="{StaticResource ResourceKey= ButtonStyle}"/>
+            <Button Command="{Binding Path=selectionSort}"  Content="Selection Sort"   Margin=" 20 10 20 5"     Style="{StaticResource ResourceKey= ButtonStyle}"/>
+            <Button Command="{Binding Path=insertionSort}"   Content="Insertion Sort"   Margin=" 20 10 20 5"     Style="{StaticResource ResourceKey= ButtonStyle}"/>
         </StackPanel>
     </Grid>
-    <UserControl.Resources>
-        <Style x:Key="button" TargetType="Button" >
-            <Setter Property="Background" Value="{x:Null}"/>
-            <Setter Property="Foreground" Value="#FFF99359"/>
-            <Setter Property="BorderBrush" Value="#FFF99359"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="FontSize" Value="17"/>
-        </Style>
-    </UserControl.Resources>
     
 </UserControl>
